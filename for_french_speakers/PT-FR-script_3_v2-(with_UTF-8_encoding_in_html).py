@@ -31,19 +31,19 @@ class InterlinearApp:
     def __init__(self, root):
         # Initialize the GUI window
         self.root = root
-        self.root.title("Interlinear Text Generator")
+        self.root.title("Générateur de Texte Interlinéaire")
         
         # Create a frame to organize GUI elements
         self.frame = tk.Frame(self.root)
         self.frame.pack(padx=10, pady=10)
         
         # Labels and entry fields for title, filename, and text inputs
-        self.label_title = tk.Label(self.frame, text="Title:")
+        self.label_title = tk.Label(self.frame, text="Titre:")
         self.label_title.grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.entry_title = tk.Entry(self.frame, width=30)
         self.entry_title.grid(row=0, column=1, padx=5, pady=5, sticky="w")
         
-        self.label_filename = tk.Label(self.frame, text="Filename/Folder Name:")
+        self.label_filename = tk.Label(self.frame, text="Nom de fichier/Dossier:")
         self.label_filename.grid(row=1, column=0, padx=5, pady=5, sticky="w")
         self.entry_filename = tk.Entry(self.frame, width=30)
         self.entry_filename.grid(row=1, column=1, padx=5, pady=5, sticky="w")
@@ -55,35 +55,35 @@ class InterlinearApp:
         self.french_line_numbers = LineNumbers(self.frame, width=4, bg="#f0f0f0", bd=0, wrap="none")
         self.french_line_numbers.grid(row=3, column=3, sticky="nsew")
         
-        self.label_portuguese = tk.Label(self.frame, text="Portuguese Words:")
+        self.label_portuguese = tk.Label(self.frame, text="Mots en Portugais:")
         self.label_portuguese.grid(row=2, column=0, padx=5, pady=5, sticky="w")
         self.entry_portuguese = tk.Text(self.frame, height=10, width=30)
         self.entry_portuguese.grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
         self.entry_portuguese.bind("<Button-1>", self.scroll_french_to_same_line)
         
-        self.label_french = tk.Label(self.frame, text="French Words:")
+        self.label_french = tk.Label(self.frame, text="Mots en Français:")
         self.label_french.grid(row=2, column=1, padx=5, pady=5, sticky="w")
         self.entry_french = tk.Text(self.frame, height=10, width=30)
         self.entry_french.grid(row=3, column=1, padx=5, pady=5, sticky="nsew")
         
         # Textfields for vertical distance and font size
-        self.label_vertical_distance = tk.Label(self.frame, text="Vertical Distance (px):")
+        self.label_vertical_distance = tk.Label(self.frame, text="Distance Verticale (px):")
         self.label_vertical_distance.grid(row=4, column=0, padx=5, pady=5, sticky="w")
         self.entry_vertical_distance = tk.Entry(self.frame, width=10)
         self.entry_vertical_distance.grid(row=4, column=1, padx=5, pady=5, sticky="w")
         self.entry_vertical_distance.insert(0, "10")  # Pre-load with default value
         
-        self.label_font_size = tk.Label(self.frame, text="Font Size:")
+        self.label_font_size = tk.Label(self.frame, text="Taille de Police:")
         self.label_font_size.grid(row=5, column=0, padx=5, pady=5, sticky="w")
         self.entry_font_size = tk.Entry(self.frame, width=10)
         self.entry_font_size.grid(row=5, column=1, padx=5, pady=5, sticky="w")
         self.entry_font_size.insert(0, "12")  # Pre-load with default value
         
         # Buttons to fetch text from files and generate interlinear text
-        self.create_button = tk.Button(self.frame, text="Create Interlinear Text", command=self.create_interlinear)
+        self.create_button = tk.Button(self.frame, text="Créer un Texte Interlinéaire", command=self.create_interlinear)
         self.create_button.grid(row=6, column=0, padx=5, pady=5)
         
-        self.open_button = tk.Button(self.frame, text="Open Existing Project", command=self.open_project)
+        self.open_button = tk.Button(self.frame, text="Ouvrir un Projet Existant", command=self.open_project)
         self.open_button.grid(row=6, column=1, padx=5, pady=5)
         
         # Initialize variables for storing interlinear text data
@@ -189,7 +189,7 @@ class InterlinearApp:
         self.entry_font_size.delete(0, tk.END)
         
         # Prompt user to select a project folder containing the JSON file
-        project_folder = filedialog.askdirectory(title="Select Project Folder")
+        project_folder = filedialog.askdirectory(title="Sélectionner le Dossier du Projet")
         if not project_folder:
             return  # If no folder selected, return without further action
         
@@ -207,7 +207,7 @@ class InterlinearApp:
             self.entry_vertical_distance.insert(0, str(project_data.get("vertical_distance", 10)))
             self.entry_font_size.insert(0, str(project_data.get("font_size", 12)))
         else:
-            print("No JSON file found in the selected folder.")
+            print("Aucun fichier JSON trouvé dans le dossier sélectionné.")
 
 
     def scroll_french_to_same_line(self, event):
